@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Mailer.NET.Mailer.Rendering;
 using Mailer.NET.Mailer.Transport;
+using Mailer.NET.Mailer.Internal;
 
 namespace Mailer.NET.Mailer
 {
@@ -19,9 +20,15 @@ namespace Mailer.NET.Mailer
         public EmailContentType Type { get; set; }
         public List<Attachment> Attachments { get; set; } 
 
-        public Email(AbstractTransport transport = null, EmailContentType type = EmailContentType.Text)
+        public Email(AbstractTransport transport, EmailContentType type = EmailContentType.Text)
         {
             Transport = transport;
+            Type = type;
+        }
+
+        public Email(EmailContentType type = EmailContentType.Text)
+        {
+            Transport = AppConfig.DefaultInstance.TryGetDefaultTransport();
             Type = type;
         }
 
