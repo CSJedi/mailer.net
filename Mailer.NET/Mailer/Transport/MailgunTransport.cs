@@ -14,6 +14,12 @@ namespace Mailer.NET.Mailer.Transport
         public string Domain { get; set; }
         public string Apikey { get; set; }
 
+        public MailgunTransport(string domain, string apiKey)
+        {
+            Domain = domain;
+            Apikey = apiKey;
+        }
+
         public override bool SendEmail(Email email)
         {
             IRestResponse response = SendMailgunMessage(email);
@@ -73,7 +79,7 @@ namespace Mailer.NET.Mailer.Transport
             }
             else
             {
-                request.AddParameter("text", "Testing some Mailgun awesomness!");
+                request.AddParameter("text", email.Message);
             }
             request.Method = Method.POST;
             return client.Execute(request);

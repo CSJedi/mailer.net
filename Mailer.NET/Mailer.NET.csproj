@@ -40,6 +40,7 @@
       <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,17 +53,32 @@
     <Compile Include="Mailer\Contact.cs" />
     <Compile Include="Mailer\Email.cs" />
     <Compile Include="Mailer\EmailContentType.cs" />
+    <Compile Include="Mailer\Internal\AppConfig.cs" />
+    <Compile Include="Mailer\Internal\ConfigFile\DefaultTransportElement.cs" />
+    <Compile Include="Mailer\Internal\ConfigFile\MailerNetSection.cs" />
+    <Compile Include="Mailer\Internal\ConfigFile\ParameterCollection.cs" />
+    <Compile Include="Mailer\Internal\ConfigFile\ParameterElement.cs" />
     <Compile Include="Mailer\Rendering\EmailRender.cs" />
     <Compile Include="Mailer\Rendering\TemplateVar.cs" />
     <Compile Include="Mailer\Transport\AbstractTransport.cs" />
     <Compile Include="Mailer\Transport\MailgunTransport.cs" />
     <Compile Include="Mailer\Transport\SmtpTransport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
