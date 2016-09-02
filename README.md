@@ -26,7 +26,7 @@ Put the following snippet on your app.config or web.config
 
 # Configure mailer.net to use Mailgun
 
-Put se following snippet on your app.config or web.config
+Put the following snippet on your app.config or web.config
 
 ```xml
 <mailernet>
