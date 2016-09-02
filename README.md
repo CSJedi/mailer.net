@@ -8,7 +8,7 @@ Install-Package Mailer.NET
 ```
 # Configure mailer.net to use smtp
 
-Put se following snippet on your app.config or web.config
+Put the following snippet on your app.config or web.config
 
 ```xml
 <mailernet>
