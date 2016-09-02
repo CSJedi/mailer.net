@@ -6,7 +6,7 @@ Maile.NET is a library to help you to send emails. You can use templates and dif
 ```
 Install-Package Mailer.NET 
 ```
-# Configure email to use smtp
+# Configure mailer.net to use smtp
 
 Put se following snippet on your app.config or web.config
 
@@ -24,7 +24,7 @@ Put se following snippet on your app.config or web.config
   </mailernet>
 ```
 
-# Configure email to use Mailgun
+# Configure mailer.net to use Mailgun
 
 Put se following snippet on your app.config or web.config
 
@@ -83,3 +83,25 @@ bool sent = email.Send();
 ```
 
 **the $person will be replaced to teste**
+
+## Configure transport dinamically
+
+```csharp
+MailgunTransport transport = new MailgunTransport("domain", "apikey");
+Email email = new Email(transport,EmailContentType.Html)
+```
+
+## How to add your custom transport
+
+Create your class extending Mailer.NET.Transport.AbstractTransport and implement SendEmail method. 
+
+```csharp
+public class CustomTransport : AbstractTransport
+{
+    public override bool SendEmail(Email email)
+    {
+        //your logic to send email here
+        return true;
+    }
+}
+```
