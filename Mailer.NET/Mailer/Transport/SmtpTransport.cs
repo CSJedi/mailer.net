@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using Mailer.NET.Mailer.Response;
 
 namespace Mailer.NET.Mailer.Transport
 {
@@ -24,7 +25,7 @@ namespace Mailer.NET.Mailer.Transport
             Ssl = ssl;
         }
 
-        public override bool SendEmail(Email email)
+        public override EmailResponse SendEmail(Email email)
         {
             using (MailMessage mail = new MailMessage())
             {
@@ -77,15 +78,20 @@ namespace Mailer.NET.Mailer.Transport
                 objSmtp.Port = Port;
                 objSmtp.EnableSsl = Ssl;
 
+                EmailResponse emailResponse = new EmailResponse();
+
                 try
                 {
                     objSmtp.Send(mail);
-                    return true;
+                    emailResponse.Success = true;
+                    emailResponse.Message = "Email successfully sent";
                 }
                 catch (Exception erro)
                 {
-                    return false;
+                    emailResponse.Success = false;
+                    emailResponse.Message = erro.Message;
                 }
+                return emailResponse;
             }
         }
     }

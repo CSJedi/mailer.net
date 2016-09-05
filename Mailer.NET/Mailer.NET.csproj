@@ -60,6 +60,7 @@
     <Compile Include="Mailer\Internal\ConfigFile\ParameterElement.cs" />
     <Compile Include="Mailer\Rendering\EmailRender.cs" />
     <Compile Include="Mailer\Rendering\TemplateVar.cs" />
+    <Compile Include="Mailer\Response\EmailResponse.cs" />
     <Compile Include="Mailer\Transport\AbstractTransport.cs" />
     <Compile Include="Mailer\Transport\MailgunTransport.cs" />
     <Compile Include="Mailer\Transport\SmtpTransport.cs" />

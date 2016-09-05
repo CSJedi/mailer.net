@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Mailer.NET.Mailer.Response;
 using RestSharp;
 using RestSharp.Authenticators;
+using RestSharp.Deserializers;
 
 namespace Mailer.NET.Mailer.Transport
 {
@@ -20,10 +24,44 @@ namespace Mailer.NET.Mailer.Transport
             Apikey = apiKey;
         }
 
-        public override bool SendEmail(Email email)
+        public override EmailResponse SendEmail(Email email)
         {
             IRestResponse response = SendMailgunMessage(email);
-            return response.StatusCode == HttpStatusCode.Accepted || response.StatusCode == HttpStatusCode.OK;
+            EmailResponse emailResponse = new EmailResponse();
+            if (response.StatusCode == HttpStatusCode.Accepted || response.StatusCode == HttpStatusCode.OK)
+            {
+                emailResponse.Success = true;
+                emailResponse.Message = "Email successfully sent";
+            }
+            else
+            {
+                emailResponse.Success = false;
+                if (response.ErrorMessage != null)
+                {
+                    emailResponse.Message = response.ErrorMessage;
+                }
+                else
+                {
+                    if (response.ContentType == "application/json")
+                    {
+                        var responseCollection = new JsonDeserializer().Deserialize<Dictionary<string, object>>(response);
+                        if (responseCollection.Count > 0)
+                        {
+                            emailResponse.Message = responseCollection["message"].ToString();
+                        }
+                        else
+                        {
+                            emailResponse.Message = "Undefined Error";
+                        }
+                    }
+                    else
+                    {
+                        emailResponse.Message = response.Content;
+                    }
+                }
+                
+            }
+            return emailResponse;
         }
 
         private IRestResponse SendMailgunMessage(Email email)

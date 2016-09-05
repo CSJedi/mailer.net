@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Mailer.NET.Mailer.Rendering;
 using Mailer.NET.Mailer.Transport;
 using Mailer.NET.Mailer.Internal;
+using Mailer.NET.Mailer.Response;
 
 namespace Mailer.NET.Mailer
 {
@@ -77,7 +78,7 @@ namespace Mailer.NET.Mailer
             Attachments.Add(new Attachment(){File = file});
         }
 
-        public bool Send()
+        public EmailResponse Send()
         {
             if (From == null)
             {
