@@ -8,12 +8,7 @@ namespace SendEmailTest
     {
         static void Main(string[] args)
         {
-            MailgunTransport transport = new MailgunTransport()
-            {
-                Domain = "",
-                Apikey = ""
-            };
-            Email email = new Email(transport, EmailContentType.Html)
+            Email email = new Email(EmailContentType.Html)
             {
                 From = new Contact() {Name = "sender", Email = "email"}
             };
