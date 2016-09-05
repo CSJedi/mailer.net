@@ -6,6 +6,14 @@ Maile.NET is a library to help you to send emails. You can use templates and dif
 ```
 Install-Package Mailer.NET 
 ```
+# Add ConfigSection of Mailer.Net
+
+```xml
+  <configSections>
+    <section name="mailernet" type="Mailer.NET.Mailer.Internal.ConfigFile.MailerNetSection, Mailer.NET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" requirePermission="false" />
+  </configSections>
+```
+
 # Configure mailer.net to use smtp
 
 Put the following snippet on your app.config or web.config
