@@ -5,22 +5,29 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailer.NET", "Mailer.NET\Mailer.NET.csproj", "{2F995553-8522-456F-88D6-156BC9DE1638}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendEmailTest", "SendEmailTest\SendEmailTest.csproj", "{673F7CA1-2743-4E19-822A-29B57799F6B1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B06E26AD-9CCC-4291-8C64-3C64CE687A18}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		DebugNET40|Any CPU = DebugNET40|Any CPU
+		DebugNET45|Any CPU = DebugNET45|Any CPU
+		ReleaseNET40|Any CPU = ReleaseNET40|Any CPU
+		ReleaseNET45|Any CPU = ReleaseNET45|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2F995553-8522-456F-88D6-156BC9DE1638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F995553-8522-456F-88D6-156BC9DE1638}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F995553-8522-456F-88D6-156BC9DE1638}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F995553-8522-456F-88D6-156BC9DE1638}.Release|Any CPU.Build.0 = Release|Any CPU
-		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.DebugNET40|Any CPU.ActiveCfg = DebugNET40|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.DebugNET40|Any CPU.Build.0 = DebugNET40|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.DebugNET45|Any CPU.ActiveCfg = DebugNET45|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.DebugNET45|Any CPU.Build.0 = DebugNET45|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.ReleaseNET40|Any CPU.ActiveCfg = ReleaseNET40|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.ReleaseNET40|Any CPU.Build.0 = ReleaseNET40|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.ReleaseNET45|Any CPU.ActiveCfg = ReleaseNET45|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.ReleaseNET45|Any CPU.Build.0 = ReleaseNET45|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
