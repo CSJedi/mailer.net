@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using Mailer.NET.Mailer.Response;
@@ -55,28 +56,43 @@ namespace Mailer.NET.Mailer.Transport
                     });
                 }
 
+                var avHtml = AlternateView.CreateAlternateViewFromString(email.Message, null, MediaTypeNames.Text.Html);
+
                 if (email.Attachments != null)
                 {
                     foreach (var attachment in email.Attachments)
                     {
-                        System.Net.Mail.Attachment anexo = new System.Net.Mail.Attachment(attachment.File, System.Net.Mime.MediaTypeNames.Application.Octet);
+                        var anexo = new System.Net.Mail.Attachment(attachment.File, attachment.MimeType);
+                        if (!string.IsNullOrEmpty(attachment.ContentId))
+                        {
+                            anexo.ContentDisposition.Inline = true;
+
+                            var inline = new LinkedResource(attachment.File, attachment.MimeType)
+                            {
+                                ContentId = attachment.ContentId
+                            };
+                            avHtml.LinkedResources.Add(inline);
+                        }
 
                         mail.Attachments.Add(anexo);
                     }
+
+                    mail.AlternateViews.Add(avHtml);
                 }
 
                 mail.IsBodyHtml = email.Type == EmailContentType.Html;
                 mail.Subject = email.Subject;
                 mail.Body = email.Message;
 
-                System.Net.Mail.SmtpClient objSmtp = new System.Net.Mail.SmtpClient();
-
-                objSmtp.UseDefaultCredentials = false;
-                objSmtp.Credentials = new System.Net.NetworkCredential(User, Password);
-                objSmtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                objSmtp.Host = Host;
-                objSmtp.Port = Port;
-                objSmtp.EnableSsl = Ssl;
+                var objSmtp = new System.Net.Mail.SmtpClient
+                {
+                    UseDefaultCredentials = false,
+                    Credentials = new System.Net.NetworkCredential(User, Password),
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Host = Host,
+                    Port = Port,
+                    EnableSsl = Ssl
+                };
 
                 EmailResponse emailResponse = new EmailResponse();
 

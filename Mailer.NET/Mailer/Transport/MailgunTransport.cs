@@ -106,19 +106,12 @@ namespace Mailer.NET.Mailer.Transport
             {
                 foreach (var attachment in email.Attachments)
                 {
-                    request.AddFile("attachment", attachment.File);
+                    request.AddFile(string.IsNullOrEmpty(attachment.ContentId) ? "attachment" : "inline", attachment.File);
                 }
             }
 
             request.AddParameter("subject", email.Subject);
-            if (email.Type == EmailContentType.Html)
-            {
-                request.AddParameter("html", email.Message);
-            }
-            else
-            {
-                request.AddParameter("text", email.Message);
-            }
+            request.AddParameter(email.Type == EmailContentType.Html ? "html" : "text", email.Message);
             request.Method = Method.POST;
             return client.Execute(request);
         }
