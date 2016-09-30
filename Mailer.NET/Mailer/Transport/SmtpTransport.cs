@@ -17,6 +17,10 @@ namespace Mailer.NET.Mailer.Transport
         public string Password { get; set; }
         public bool Ssl { get; set; }
 
+        public SmtpTransport()
+        {
+            
+        }
         public SmtpTransport(string host, int port, string user, string password, bool ssl)
         {
             Host = host;
@@ -62,19 +66,20 @@ namespace Mailer.NET.Mailer.Transport
                 {
                     foreach (var attachment in email.Attachments)
                     {
-                        var anexo = new System.Net.Mail.Attachment(attachment.File, attachment.MimeType);
+                        
                         if (!string.IsNullOrEmpty(attachment.ContentId))
                         {
-                            anexo.ContentDisposition.Inline = true;
-
                             var inline = new LinkedResource(attachment.File, attachment.MimeType)
                             {
                                 ContentId = attachment.ContentId
                             };
                             avHtml.LinkedResources.Add(inline);
                         }
-
-                        mail.Attachments.Add(anexo);
+                        else
+                        {
+                            var anexo = new System.Net.Mail.Attachment(attachment.File, attachment.MimeType);
+                            mail.Attachments.Add(anexo);
+                        }
                     }
 
                     mail.AlternateViews.Add(avHtml);

@@ -69,13 +69,13 @@ namespace Mailer.NET.Mailer
             TemplateVars.Add(new TemplateVar(){Name = name, Data = data});
         }
 
-        public void AddAttachment(string file)
+        public void AddAttachment(Attachment file)
         {
             if (Attachments == null)
             {
                 Attachments = new List<Attachment>();
             }
-            Attachments.Add(new Attachment(){File = file});
+            Attachments.Add(file);
         }
 
         public EmailResponse Send()
