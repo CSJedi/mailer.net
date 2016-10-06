@@ -10,14 +10,14 @@
     <RootNamespace>Mailer.NET</RootNamespace>
     <AssemblyName>Mailer.NET</AssemblyName>
     <TargetFrameworkVersion Condition=" '$(Configuration)' == 'DebugNET45' ">v4.5</TargetFrameworkVersion>
-	<TargetFrameworkVersion Condition=" '$(Configuration)' == 'DebugNET40' ">v4.0</TargetFrameworkVersion>
-	<TargetFrameworkVersion Condition=" '$(Configuration)' == 'ReleaseNET45' ">v4.5</TargetFrameworkVersion>
-	<TargetFrameworkVersion Condition=" '$(Configuration)' == 'ReleaseNET40' ">v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition=" '$(Configuration)' == 'DebugNET40' ">v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition=" '$(Configuration)' == 'ReleaseNET45' ">v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion Condition=" '$(Configuration)' == 'ReleaseNET40' ">v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-	<NugetDirectory>net45</NugetDirectory>
+    <NugetDirectory>net45</NugetDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugNET45|AnyCPU'">
     <OutputPath>bin\$(Configuration)\$(TargetFrameworkVersion)\</OutputPath>
@@ -27,8 +27,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-	<NugetDirectory>net45</NugetDirectory>
-	<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NugetDirectory>net45</NugetDirectory>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugNET40|AnyCPU'">
     <OutputPath>bin\$(Configuration)\$(TargetFrameworkVersion)\</OutputPath>
@@ -38,7 +38,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-	<TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseNET45|AnyCPU'">
     <OutputPath>bin\$(Configuration)\$(TargetFrameworkVersion)\</OutputPath>
@@ -48,8 +48,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-	<TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-	<NugetDirectory>net45</NugetDirectory>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NugetDirectory>net45</NugetDirectory>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleaseNET40|AnyCPU'">
     <OutputPath>bin\$(Configuration)\$(TargetFrameworkVersion)\</OutputPath>
@@ -59,8 +59,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-	<TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-	<NugetDirectory>net40</NugetDirectory>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <NugetDirectory>net40</NugetDirectory>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NVelocity">
@@ -95,6 +95,7 @@
     <Compile Include="Mailer\Rendering\TemplateVar.cs" />
     <Compile Include="Mailer\Response\EmailResponse.cs" />
     <Compile Include="Mailer\Transport\AbstractTransport.cs" />
+    <Compile Include="Mailer\Transport\DebugTransport.cs" />
     <Compile Include="Mailer\Transport\MailgunTransport.cs" />
     <Compile Include="Mailer\Transport\SmtpTransport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

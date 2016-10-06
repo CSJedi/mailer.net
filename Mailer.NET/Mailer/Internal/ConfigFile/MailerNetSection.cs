@@ -12,7 +12,7 @@ namespace Mailer.NET.Mailer.Internal.ConfigFile
         public virtual DefaultTransportElement DefaultTransport
         {
             get { return (DefaultTransportElement)this[DefaultTransportKey]; }
-            set { this[DefaultTransportKey] = value; }
+            set { this[DefaultTransportKey] = value;}
         }
     }
 }
