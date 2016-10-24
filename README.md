@@ -106,10 +106,10 @@ Create your class extending Mailer.NET.Transport.AbstractTransport and implement
 ```csharp
 public class CustomTransport : AbstractTransport
 {
-    public override bool SendEmail(Email email)
+    public override EmailResponse SendEmail(Email email)
     {
         //your logic to send email here
-        return true;
+        return new EmailResponse("Message", true);
     }
 }
 ```
