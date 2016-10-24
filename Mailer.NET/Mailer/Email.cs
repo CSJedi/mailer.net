@@ -19,7 +19,8 @@ namespace Mailer.NET.Mailer
         public Contact From { get; set; }
         public String Subject { get; set; }
         public EmailContentType Type { get; set; }
-        public List<Attachment> Attachments { get; set; } 
+        public List<Attachment> Attachments { get; set; }
+        public Boolean HasReadNotification { get; set; }
 
         public Email(AbstractTransport transport, EmailContentType type = EmailContentType.Text)
         {
