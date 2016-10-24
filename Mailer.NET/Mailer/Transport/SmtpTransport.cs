@@ -89,6 +89,11 @@ namespace Mailer.NET.Mailer.Transport
                 mail.Subject = email.Subject;
                 mail.Body = email.Message;
 
+                if (email.HasReadNotification)
+                {
+                    mail.Headers.Add("Disposition-Notification-To", email.From.Email);
+                }
+
                 var objSmtp = new System.Net.Mail.SmtpClient
                 {
                     UseDefaultCredentials = false,

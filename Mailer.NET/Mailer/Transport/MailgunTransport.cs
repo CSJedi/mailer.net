@@ -110,6 +110,11 @@ namespace Mailer.NET.Mailer.Transport
                 }
             }
 
+            if (email.HasReadNotification)
+            {
+                request.AddParameter("h:Disposition-Notification-To", email.From.Email);
+            }
+
             request.AddParameter("subject", email.Subject);
             request.AddParameter(email.Type == EmailContentType.Html ? "html" : "text", email.Message);
             request.Method = Method.POST;
