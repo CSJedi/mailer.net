@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Net.Mime;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Mailer.NET.Mailer.Response;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -113,6 +108,11 @@ namespace Mailer.NET.Mailer.Transport
             if (email.HasReadNotification)
             {
                 request.AddParameter("h:Disposition-Notification-To", email.From.Email);
+            }
+
+            if (!String.IsNullOrEmpty(email.ReplyTo))
+            {
+                request.AddParameter("h:Reply-To", email.ReplyTo);
             }
 
             request.AddParameter("subject", email.Subject);

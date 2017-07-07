@@ -21,6 +21,7 @@ namespace Mailer.NET.Mailer
         public EmailContentType Type { get; set; }
         public List<Attachment> Attachments { get; set; }
         public Boolean HasReadNotification { get; set; }
+        public String ReplyTo { get; set; }
 
         public Email(AbstractTransport transport, EmailContentType type = EmailContentType.Text)
         {
