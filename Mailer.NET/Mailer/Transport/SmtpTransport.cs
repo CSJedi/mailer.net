@@ -94,6 +94,11 @@ namespace Mailer.NET.Mailer.Transport
                     mail.Headers.Add("Disposition-Notification-To", email.From.Email);
                 }
 
+                if (!String.IsNullOrEmpty(email.ReplyTo))
+                {
+                    mail.ReplyToList.Add(email.ReplyTo);
+                }
+
                 var objSmtp = new System.Net.Mail.SmtpClient
                 {
                     UseDefaultCredentials = false,
