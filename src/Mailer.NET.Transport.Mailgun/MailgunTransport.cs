@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using Mailer.NET.Mailer;
 using Mailer.NET.Mailer.Response;
+using Mailer.NET.Mailer.Transport;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Deserializers;
 
-namespace Mailer.NET.Mailer.Transport
+namespace Mailer.NET.Transport
 {
     public class MailgunTransport : AbstractTransport
     {

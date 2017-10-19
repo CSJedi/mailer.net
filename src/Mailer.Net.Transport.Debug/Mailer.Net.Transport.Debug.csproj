@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Mailer.Net.Transport</RootNamespace>
+    <AssemblyName>Mailer.Net.Transport.Debug</AssemblyName>
+    <TargetFrameworks>net4;net45</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Mailer.NET\Mailer.NET.csproj" />
+  </ItemGroup>
+</Project>

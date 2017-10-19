@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>Mailer.NET</RootNamespace>
+    <AssemblyName>Mailer.NET</AssemblyName>
+    <TargetFrameworks>net45;net4</TargetFrameworks>
+    <RestorePackages>true</RestorePackages>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NVelocity" Version="1.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+</Project>

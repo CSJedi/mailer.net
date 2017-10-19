@@ -19,15 +19,15 @@ namespace Mailer.NET.Mailer.Internal.ConfigFile
         [ConfigurationProperty(ValueKey, IsRequired = true)]
         public string ValueString
         {
-            get { return (string)this[ValueKey]; }
-            set { this[ValueKey] = value; }
+            get => (string)this[ValueKey];
+            set => this[ValueKey] = value;
         }
 
         [ConfigurationProperty(TypeKey, DefaultValue = "System.String")]
         public string TypeName
         {
-            get { return (string)this[TypeKey]; }
-            set { this[TypeKey] = value; }
+            get => (string)this[TypeKey];
+            set => this[TypeKey] = value;
         }
 
         public object GetTypedParameterValue()

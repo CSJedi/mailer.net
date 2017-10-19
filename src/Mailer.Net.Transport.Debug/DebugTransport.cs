@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Mailer.NET.Mailer;
 using Mailer.NET.Mailer.Response;
+using Mailer.NET.Mailer.Transport;
 
-namespace Mailer.NET.Mailer.Transport
+namespace Mailer.Net.Transport
 {
     public class DebugTransport : AbstractTransport
     {
@@ -15,12 +13,12 @@ namespace Mailer.NET.Mailer.Transport
             Success = success;
         }
 
-        public override Response.EmailResponse SendEmail(Email email)
+        public override EmailResponse SendEmail(Email email)
         {
-            var response = new EmailResponse()
+            var response = new EmailResponse
             {
                 Success = Success,
-                Message = (Success ? "Email successfully sent" : "Undefined Error")
+                Message = Success ? "Email successfully sent" : "Undefined Error"
             };
             return response;
         }
