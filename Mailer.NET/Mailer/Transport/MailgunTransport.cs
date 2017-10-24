@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 using Mailer.NET.Mailer.Response;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -21,53 +22,46 @@ namespace Mailer.NET.Mailer.Transport
 
         public override EmailResponse SendEmail(Email email)
         {
-            IRestResponse response = SendMailgunMessage(email);
-            EmailResponse emailResponse = new EmailResponse();
-            if (response.StatusCode == HttpStatusCode.Accepted || response.StatusCode == HttpStatusCode.OK)
-            {
-                emailResponse.Success = true;
-                emailResponse.Message = "Email successfully sent";
-            }
-            else
-            {
-                emailResponse.Success = false;
-                if (response.ErrorMessage != null)
-                {
-                    emailResponse.Message = response.ErrorMessage;
-                }
-                else
-                {
-                    if (response.ContentType == "application/json")
-                    {
-                        var responseCollection = new JsonDeserializer().Deserialize<Dictionary<string, object>>(response);
-                        if (responseCollection.Count > 0)
-                        {
-                            emailResponse.Message = responseCollection["message"].ToString();
-                        }
-                        else
-                        {
-                            emailResponse.Message = "Undefined Error";
-                        }
-                    }
-                    else
-                    {
-                        emailResponse.Message = response.Content;
-                    }
-                }
-                
-            }
-            return emailResponse;
+            var response = SendMailgunMessage(email);
+            return ParseMailgunResponse(response);
+        }
+
+        public override async Task<EmailResponse> SendEmailAsync(Email email)
+        {
+            var response = await SendMailgunMessageAsync(email);
+            return ParseMailgunResponse(response);
         }
 
         private IRestResponse SendMailgunMessage(Email email)
         {
-            RestClient client = new RestClient();
+            var client = GenerateRestClient();
+            var request = GenerateMailgunRequest(email);
+
+            return client.Execute(request);
+        }
+
+        private async Task<IRestResponse> SendMailgunMessageAsync(Email email)
+        {
+            var client = GenerateRestClient();
+            var request = GenerateMailgunRequest(email);
+
+            return await client.ExecuteTaskAsync(request);
+        }
+
+        private IRestClient GenerateRestClient()
+        {
+            IRestClient client = new RestClient();
             client.BaseUrl = new Uri("https://api.mailgun.net/v3");
             client.Authenticator =
                 new HttpBasicAuthenticator("api",
                     Apikey);
             client.Proxy = Proxy;
-            RestRequest request = new RestRequest();
+            return client;
+        }
+
+        private IRestRequest GenerateMailgunRequest(Email email)
+        {
+            IRestRequest request = new RestRequest();
             request.AddParameter("domain",
                 Domain, ParameterType.UrlSegment);
             request.Resource = Domain + "/messages";
@@ -118,7 +112,47 @@ namespace Mailer.NET.Mailer.Transport
             request.AddParameter("subject", email.Subject);
             request.AddParameter(email.Type == EmailContentType.Html ? "html" : "text", email.Message);
             request.Method = Method.POST;
-            return client.Execute(request);
+            return request;
+        }
+
+        private EmailResponse ParseMailgunResponse(IRestResponse response)
+        {
+            var emailResponse = new EmailResponse();
+            if (response.StatusCode == HttpStatusCode.Accepted || response.StatusCode == HttpStatusCode.OK)
+            {
+                emailResponse.Success = true;
+                emailResponse.Message = "Email successfully sent";
+            }
+            else
+            {
+                emailResponse.Success = false;
+                if (response.ErrorMessage != null)
+                {
+                    emailResponse.Message = response.ErrorMessage;
+                }
+                else
+                {
+                    if (response.ContentType == "application/json")
+                    {
+                        var responseCollection = new JsonDeserializer().Deserialize<Dictionary<string, object>>(response);
+                        if (responseCollection.Count > 0)
+                        {
+                            emailResponse.Message = responseCollection["message"].ToString();
+                        }
+                        else
+                        {
+                            emailResponse.Message = "Undefined Error";
+                        }
+                    }
+                    else
+                    {
+                        emailResponse.Message = response.Content;
+                    }
+                }
+
+            }
+
+            return emailResponse;
         }
     }
 }

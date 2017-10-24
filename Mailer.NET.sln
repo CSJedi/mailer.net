@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mailer.NET", "Mailer.NET\Mailer.NET.csproj", "{2F995553-8522-456F-88D6-156BC9DE1638}"
 EndProject
@@ -20,12 +20,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2F995553-8522-456F-88D6-156BC9DE1638}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{2F995553-8522-456F-88D6-156BC9DE1638}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F995553-8522-456F-88D6-156BC9DE1638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F995553-8522-456F-88D6-156BC9DE1638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F995553-8522-456F-88D6-156BC9DE1638}.Release|Any CPU.Build.0 = Release|Any CPU
-		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{673F7CA1-2743-4E19-822A-29B57799F6B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
