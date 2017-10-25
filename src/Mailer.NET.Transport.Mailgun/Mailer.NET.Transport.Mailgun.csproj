@@ -2,7 +2,7 @@
   <PropertyGroup>
     <RootNamespace>Mailer.NET.Transport</RootNamespace>
     <AssemblyName>Mailer.NET.Transport.Mailgun</AssemblyName>
-    <TargetFrameworks>net4;net45</TargetFrameworks>
+    <TargetFrameworks>net45</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>

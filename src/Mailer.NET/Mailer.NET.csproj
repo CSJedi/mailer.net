@@ -2,7 +2,7 @@
   <PropertyGroup>
     <RootNamespace>Mailer.NET</RootNamespace>
     <AssemblyName>Mailer.NET</AssemblyName>
-    <TargetFrameworks>net45;net4</TargetFrameworks>
+    <TargetFrameworks>net45</TargetFrameworks>
     <RestorePackages>true</RestorePackages>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>

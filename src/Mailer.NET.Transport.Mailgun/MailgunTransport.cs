@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using Mailer.NET.Mailer;
 using Mailer.NET.Mailer.Response;
 using Mailer.NET.Mailer.Transport;
 using RestSharp;
@@ -53,9 +54,7 @@ namespace Mailer.NET.Transport
         {
             IRestClient client = new RestClient();
             client.BaseUrl = new Uri("https://api.mailgun.net/v3");
-            client.Authenticator =
-                new HttpBasicAuthenticator("api",
-                    Apikey);
+            client.Authenticator = new HttpBasicAuthenticator("api", Apikey);
             client.Proxy = Proxy;
             return client;
         }
@@ -63,8 +62,7 @@ namespace Mailer.NET.Transport
         private IRestRequest GenerateMailgunRequest(Email email)
         {
             IRestRequest request = new RestRequest();
-            request.AddParameter("domain",
-                Domain, ParameterType.UrlSegment);
+            request.AddParameter("domain", Domain, ParameterType.UrlSegment);
             request.Resource = Domain + "/messages";
             request.AddParameter("from", email.From.ToString());
 
