@@ -4,6 +4,7 @@ using Mailer.NET.Mailer.Rendering;
 using Mailer.NET.Mailer.Transport;
 using Mailer.NET.Mailer.Internal;
 using Mailer.NET.Mailer.Response;
+using System.Threading.Tasks;
 
 namespace Mailer.NET.Mailer
 {
@@ -82,6 +83,20 @@ namespace Mailer.NET.Mailer
 
         public EmailResponse Send()
         {
+            ValidateEmail();
+
+            return Transport.SendEmail(this);
+        }
+
+        public async Task<EmailResponse> SendEmailAsync()
+        {
+            ValidateEmail();
+
+            return await Transport.SendEmailAsync(this);
+        }
+
+        private void ValidateEmail()
+        {
             if (From == null)
             {
                 throw new InvalidOperationException("The From is not defined!");
@@ -101,8 +116,6 @@ namespace Mailer.NET.Mailer
             {
                 Message = EmailRender.RenderEmail(this);
             }
-
-            return Transport.SendEmail(this);
         }
     }
 }

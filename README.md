@@ -1,6 +1,6 @@
 # About
 
-Maile.NET is a library to help you to send emails. You can use templates and different transports like Mailgun and Smtp.
+Mailer.NET is a library to help you to send emails. You can use templates and different transports like Mailgun and Smtp.
 
 # Install Mailer.NET via nuget
 ```
@@ -14,7 +14,7 @@ Install-Package Mailer.NET
   </configSections>
 ```
 
-# Configure mailer.net to use smtp
+# Configure Mailer.NET to use smtp
 
 Put the following snippet on your app.config or web.config
 
@@ -32,7 +32,7 @@ Put the following snippet on your app.config or web.config
   </mailernet>
 ```
 
-# Configure mailer.net to use Mailgun
+# Configure Mailer.NET to use Mailgun
 
 Put the following snippet on your app.config or web.config
 
