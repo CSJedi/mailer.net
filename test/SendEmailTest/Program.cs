@@ -1,6 +1,4 @@
-﻿using System.Net;
-using Mailer.NET.Mailer;
-using Mailer.NET.Mailer.Transport;
+﻿using Mailer.NET.Mailer;
 
 namespace SendEmailTest
 {
@@ -10,7 +8,7 @@ namespace SendEmailTest
         {
             Email email = new Email(EmailContentType.Html)
             {
-                From = new Contact() {Name = "sender", Email = "email"}
+                From = new Contact {Name = "sender", Email = "email"}
             };
             email.AddTo("email", "name");
             email.Subject = "subject";

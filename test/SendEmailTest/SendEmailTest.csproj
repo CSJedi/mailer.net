@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+  <PropertyGroup>
+    <RootNamespace>SendEmailTest</RootNamespace>
+    <AssemblyName>SendEmailTest</AssemblyName>
+    <TargetFrameworks>net45</TargetFrameworks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Mailer.NET\Mailer.NET.csproj" />
+  </ItemGroup>
+  
+</Project>
